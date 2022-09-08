@@ -1,0 +1,49 @@
+<odoo>
+
+    <record id="view_sale_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='order_lines']" position="after">
+                <page name="juice_product_info" string="Product Info">
+                    <group>
+                        <group>
+                            <field name="cust_note"/>
+                            <field name="f_name_bill"/>
+                            <field name="l_name_bill"/>
+                            <field name="bill_address"/>
+                            <field name="bill_city"/>
+                            <field name="bill_email"/>
+                            <field name="bill_phone"/>
+                            <field name="f_name_ship"/>
+                            <field name="l_name_ship"/>
+                            <field name="ship_address"/>
+                            <field name="ship_city"/>
+                            <field name="con_code_ship"/>
+                            <field name="ship_method"/>
+                        </group>
+                        <group>
+                            <field name="pay_method"/>
+                            <field name="cart_disc"/>
+                            <field name="ship_order"/>
+                            <field name="refund_order"/>
+                            <field name="product_id"/>
+                            <field name="product_variation"/>
+                            <field name="coupon_code"/>
+                            <field name="amount_disc"/>
+                            <field name="disc_tax"/>
+                            <field name="delivery_time"/>
+                            <field name="prod_type_2"/>
+                            <field name="order_date"/>
+                            <field name="prod_type_text"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
