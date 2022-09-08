@@ -1,0 +1,32 @@
+<odoo>
+
+    <record id="view_production_report_wizard_form" model="ir.ui.view">
+		<field name="name">Production Report wizards</field>
+		<field name="model">production.report.wizard</field>
+		<field name="arch" type="xml">
+			<form>
+				<group>
+					<field name="date" required="1"/>
+				</group>
+
+				<footer>
+					<button name="print_report" string="Apply" type="object" class="btn-primary"/>
+					<button  string="Cancel" type="object" class="btn-secondary" special="cancel"/>
+				</footer>
+			</form>
+		</field>
+	</record>
+	<record id="action_production_report_wizard_form" model="ir.actions.act_window">
+		<field name="name">Production Report</field>
+		<field name="res_model">production.report.wizard</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="view_production_report_wizard_form"/>
+		<field name="target">new</field>
+	</record>
+
+	<menuitem id="production_report_menu" action="production_report.action_production_report_wizard_form" name="Production Report" parent="mrp.menu_mrp_reporting" />
+
+
+
+</odoo>
