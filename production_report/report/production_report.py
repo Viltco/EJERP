@@ -88,6 +88,7 @@ class ProductionReportInh(models.AbstractModel):
                 new_list.append({
                     'name': bom.product_id.name,
                     'qty': qty,
+                    'uom': bom.product_uom_id.name,
                 })
         print(new_list)
         return new_list

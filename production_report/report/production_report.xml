@@ -31,7 +31,7 @@
                                 <th name="th_name" class="text-left"><strong>Product Name</strong></th>
                                 <th name="th_name" class="text-left"><strong>Product Variation</strong></th>
                                 <th name="th_qty" class="text-center"><strong>Variation Quantity</strong></th>
-                                <th name="th_rate" class="text-center"><strong>Litres of Juice</strong></th>
+<!--                                <th name="th_rate" class="text-center"><strong>Litres of Juice</strong></th>-->
                                 <th name="th_rate" class="text-center"><strong>Ingredients details</strong></th>
                                 <th name="th_rate" class="text-center"><strong>Total Weight/ Volume</strong></th>
                             </tr>
@@ -39,6 +39,7 @@
                         <tbody>
                             <!--                            <t t-set="grand_total_value" t-value="0" />-->
                             <t  t-foreach="product_tmpls" t-as="product">
+                                <tr>
                                 <td class="thead-light">
                                     <span t-esc="product.id"/>
                                 </td>
@@ -59,21 +60,21 @@
                                         <t t-foreach="product.product_variant_ids" t-as="variant">
                                             <tr class="text-center">
                                                 <t t-set="qty" t-value="get_variant_qty(variant)"/>
-                                                <span class="text-center" t-esc="qty"/>
+                                                <span class="text-center" t-esc="qty"/>&#160;<span t-esc="variant.uom_id.name"/>
                                             </tr><br/>
                                         </t>
                                     </table>
                                 </td>
-                                <td class="text-center">
-                                    <table width="100%">
-                                        <t t-foreach="product.product_variant_ids" t-as="variant">
-                                            <tr class="text-center">
-                                                <t t-set="qty" t-value="get_variant_qty(variant)"/>
-                                                <span class="text-center" t-esc="qty"/>
-                                            </tr><br/>
-                                        </t>
-                                    </table>
-                                </td>
+<!--                                <td class="text-center">-->
+<!--                                    <table width="100%">-->
+<!--                                        <t t-foreach="product.product_variant_ids" t-as="variant">-->
+<!--                                            <tr class="text-center">-->
+<!--                                                <t t-set="qty" t-value="get_variant_qty(variant)"/>-->
+<!--                                                <span class="text-center" t-esc="qty"/>-->
+<!--                                            </tr><br/>-->
+<!--                                        </t>-->
+<!--                                    </table>-->
+<!--                                </td>-->
                                 <t t-set="boms" t-value="get_variant_bom(product)"/>
                                 <td class="thead-light">
                                     <table width="100%">
@@ -94,11 +95,12 @@
                                             <!--                                                <t t-set="bom_qty" t-value="bom_qty+get_variant_bom_qty(bom, variant)"/>-->
                                             <!--                                            </t>-->
                                             <tr>
-                                                <span class="text-nowrap" t-esc="get_variant_bom_qty(bom, product)"/>
+                                                <span class="text-nowrap" t-esc="get_variant_bom_qty(bom, product)"/>&#160;<span t-esc="bom.product_uom_id.name"/>
                                             </tr><br/>
                                         </t>
                                     </table>
                                 </td>
+                                </tr>
                             </t>
 
                         </tbody>
@@ -111,7 +113,7 @@
                                 <span t-esc="line['name']"/>
                             </td>
                             <td class="text-center">
-                                <span t-esc="line['qty']"/>
+                                <span t-esc="line['qty']"/> &#160;<span t-esc="line['uom']"/>
                             </td>
                             </tr>
                         </t>
